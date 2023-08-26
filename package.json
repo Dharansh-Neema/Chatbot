@@ -1,0 +1,14 @@
+{
+  "name": "dukaan",
+  "version": "1.0.0",
+  "description": "This application will connect user with chatbots",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Dharansh Neema",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
