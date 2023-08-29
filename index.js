@@ -11,6 +11,9 @@ dbconfig();
 //Creating chatbot table
 // const createChatBotTable = require("./config/chatbotEntity");
 // createChatBotTable();
+//creating converstaion table
+const createConversationTable = require("./config/conversationEntity");
+createConversationTable();
 //Regular middlewalre
 const bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +22,8 @@ app.use(express.json());
 //Importing routes
 const userRoutes = require("./routes/user");
 const chatbotrourtes = require("./routes/chatbot");
-app.use("/", userRoutes, chatbotrourtes);
+const conversation = require("./routes/conversation");
+app.use("/", userRoutes, chatbotrourtes, conversation);
 
 //Setting up the PORT
 app.listen(PORT, () => {
