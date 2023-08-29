@@ -8,7 +8,8 @@ exports.home = async (req, res) => {
 exports.createusers = async (req, res, next) => {
   try {
     let { name, email, password } = req.body;
-
+    if (!name || !email || !password)
+      throw new Error("Name,Email, password are required");
     let db = dbconfig();
     //Hashing the password with 10 round of salts
     password = await bcrypt.hash(password, 10);
