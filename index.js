@@ -19,6 +19,21 @@ const bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
+//Setting up Passport and session
+const passport = require("passport");
+const session = require("express-session");
+let SQLiteStore = require("connect-sqlite3")(session);
+app.use(
+  session({
+    secret: "chatbotsecret",
+    resave: false,
+    saveUninitialized: false,
+    store: new SQLiteStore({ db: "users.db", dir: "./models/" }),
+  })
+);
+app.use(passport.initialize());
+app.use(passport.authenticate("session"));
 //Importing routes
 const userRoutes = require("./routes/user");
 const chatbotrourtes = require("./routes/chatbot");

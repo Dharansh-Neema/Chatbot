@@ -65,7 +65,6 @@ exports.getallusers = async (req, res) => {
 };
 
 //get the users from their :id
-
 exports.getuserfromid = async (req, res) => {
   try {
     const id = req.params.id;

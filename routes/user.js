@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const passport = require("../passport-config");
 const {
   home,
   createusers,
@@ -16,4 +17,9 @@ router
   .delete(deleteUser);
 
 router.route("/users").post(createusers).get(getallusers);
+router.route("/users/login").post(
+  passport.authenticate("local", {
+    successRedirect: "/",
+  })
+);
 module.exports = router;
